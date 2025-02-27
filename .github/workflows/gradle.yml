@@ -6,8 +6,8 @@ on:
         type: boolean
         description: Update the version
         required: true
-  pull_request:
-    branches: [ "master" ]
+#  pull_request:
+#    branches: [ "master" ]
 
 jobs:
   deploy:
