@@ -1,0 +1,25 @@
+spring:
+  application:
+    name: ptit_oop
+
+  datasource:
+    url: jdbc:postgresql://aws-0-ap-southeast-1.pooler.supabase.com:6543/postgres
+    username: postgres.dwurmpcxhclqjnsyngij
+    password: YPN0tcHqLeeH5Bv1dPAA3o
+    driver-class-name: 'org.postgresql.Driver'
+    hikari:
+      maximumPoolSize: 120
+      idleTimeout: 300000
+      connectionTimeout: 300000
+      leakDetectionThreshold: 300000
+      schema: ptit_oop
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        generate_statistics: false
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+      jdbc:
+        time_zone: Asia/Ho_Chi_Minh
+    open-in-view: false
