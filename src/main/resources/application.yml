@@ -23,3 +23,6 @@ spring:
       jdbc:
         time_zone: Asia/Ho_Chi_Minh
     open-in-view: false
+  jwt:
+    secret: da39a3ee5e6b4b0d3255bfef95601890afd80709
+    timeout: 86400000
