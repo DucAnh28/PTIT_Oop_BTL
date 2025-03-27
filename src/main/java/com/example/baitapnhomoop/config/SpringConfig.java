@@ -1,7 +1,7 @@
 package com.example.baitapnhomoop.config;
 
 import com.example.baitapnhomoop.repository.AppUserRepo;
-import com.example.baitapnhomoop.repository.RoleRepo;
+import com.example.baitapnhomoop.repository.AppRoleRepo;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
@@ -9,12 +9,12 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 public class SpringConfig {
 
     private final AppUserRepo appUserRepo;
-    private final RoleRepo roleRepo;
+    private final AppRoleRepo appRoleRepo;
     private final PasswordEncoder passwordEncoder;
 
-    public SpringConfig(AppUserRepo appUserRepo, RoleRepo roleRepo, PasswordEncoder passwordEncoder) {
+    public SpringConfig(AppUserRepo appUserRepo, AppRoleRepo appRoleRepo, PasswordEncoder passwordEncoder) {
         this.appUserRepo = appUserRepo;
-        this.roleRepo = roleRepo;
+        this.appRoleRepo = appRoleRepo;
         this.passwordEncoder = passwordEncoder;
     }
 

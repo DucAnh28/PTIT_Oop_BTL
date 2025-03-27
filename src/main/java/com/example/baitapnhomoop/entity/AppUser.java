@@ -26,7 +26,7 @@ public class AppUser extends BaseEntity {
     private String phone;
 
     @Column(columnDefinition = "int default 1")
-    private int status;
+    private int status = 1;
 
     @Column
     private String address;

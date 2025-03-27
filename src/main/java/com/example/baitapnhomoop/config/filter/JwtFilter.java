@@ -53,7 +53,6 @@ public class JwtFilter extends OncePerRequestFilter {
             logger.error("Can NOT set Can NOT set user authentication -> Message: {}", e);
         }
         filterChain.doFilter(request, response);
-        filterChain.doFilter(request, response);
     }
 
 

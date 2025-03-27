@@ -4,5 +4,5 @@ import com.example.baitapnhomoop.entity.AppRole;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface RoleRepo extends CommonRepository<AppRole, Long> {
+public interface AppRoleRepo extends CommonRepository<AppRole, Long> {
 }

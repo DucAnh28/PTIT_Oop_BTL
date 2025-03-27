@@ -1,11 +1,11 @@
 package com.example.baitapnhomoop.request;
 
-public class LoginReq {
+public class SigninReq {
 
     private String username;
     private String password;
 
-    public LoginReq(String username, String password) {
+    public SigninReq(String username, String password) {
         this.username = username;
         this.password = password;
     }
