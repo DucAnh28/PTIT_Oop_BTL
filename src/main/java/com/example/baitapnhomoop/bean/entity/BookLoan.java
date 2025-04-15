@@ -10,7 +10,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 @Entity
 @Table(name = "book_loan")
@@ -18,17 +18,17 @@ public class BookLoan extends BaseEntity {
 
     @JoinColumn(name = "book_id")
     @OneToOne
-    private Book bookId;
+    private Book book;
 
     @JoinColumn(name = "user_id")
     @OneToOne
     private AppUser userId;
 
     @Column(name = "date_borrow", nullable = false)
-    private LocalDateTime dateBorrow;
+    private LocalDate dateBorrow;
 
     @Column(name = "date_return", nullable = false)
-    private LocalDateTime dateReturn;
+    private LocalDate dateReturn;
 
     @Column(name = "status", nullable = false)
     @Enumerated(EnumType.STRING)
@@ -37,8 +37,8 @@ public class BookLoan extends BaseEntity {
     @Column(name = "student_code", nullable = false)
     private String studentCode;
 
-    public BookLoan(Book bookId, AppUser userId, LocalDateTime dateBorrow, LocalDateTime dateReturn, LoanStatus status, String studentCode) {
-        this.bookId = bookId;
+    public BookLoan(Book book, AppUser userId, LocalDate dateBorrow, LocalDate dateReturn, LoanStatus status, String studentCode) {
+        this.book = book;
         this.userId = userId;
         this.dateBorrow = dateBorrow;
         this.dateReturn = dateReturn;
@@ -50,12 +50,12 @@ public class BookLoan extends BaseEntity {
 
     }
 
-    public Book getBookId() {
-        return bookId;
+    public Book getBook() {
+        return book;
     }
 
-    public void setBookId(Book bookId) {
-        this.bookId = bookId;
+    public void setBook(Book book) {
+        this.book = book;
     }
 
     public AppUser getUserId() {
@@ -66,22 +66,6 @@ public class BookLoan extends BaseEntity {
         this.userId = userId;
     }
 
-    public LocalDateTime getDateBorrow() {
-        return dateBorrow;
-    }
-
-    public void setDateBorrow(LocalDateTime dateBorrow) {
-        this.dateBorrow = dateBorrow;
-    }
-
-    public LocalDateTime getDateReturn() {
-        return dateReturn;
-    }
-
-    public void setDateReturn(LocalDateTime dateReturn) {
-        this.dateReturn = dateReturn;
-    }
-
     public LoanStatus getStatus() {
         return status;
     }
@@ -90,5 +74,28 @@ public class BookLoan extends BaseEntity {
         this.status = status;
     }
 
+    public String getStudentCode() {
+        return studentCode;
+    }
 
+    public void setStudentCode(String studentCode) {
+        this.studentCode = studentCode;
+    }
+
+    public LocalDate getDateBorrow() {
+        return dateBorrow;
+    }
+
+    public void setDateBorrow(LocalDate dateBorrow) {
+        this.dateBorrow = dateBorrow;
+    }
+
+    public LocalDate getDateReturn() {
+        return dateReturn;
+    }
+
+    public void setDateReturn(LocalDate dateReturn) {
+        this.dateReturn = dateReturn;
+    }
 }
+

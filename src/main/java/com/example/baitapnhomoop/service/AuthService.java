@@ -49,6 +49,10 @@ public class AuthService {
 
     @Transactional(rollbackFor = Exception.class)
     public SignupResp register(SignupReq signupReq) {
+        AppUser existed = appUserRepo.findByUsername(signupReq.getUsername());
+        if (existed != null)
+            throw new CommonException(HttpStatus.BAD_REQUEST, "User already exists", "User already exists", null);
+
         Set<AppRole> appRoles = appRoleRepo.findAll().stream()
                 .filter(appRole -> appRole.getName().equals(Role.ROLE_USER))
                 .collect(Collectors.toSet());

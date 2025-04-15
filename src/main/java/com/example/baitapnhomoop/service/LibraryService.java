@@ -24,8 +24,7 @@ import org.springframework.data.jpa.domain.Specification;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
-import java.security.Principal;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
@@ -41,7 +40,7 @@ public class LibraryService {
 
     private final BookLoanRepo bookLoanRepo;
 
-    public static final String dateFormat = "yyyy-MM-dd HH:mm:ss";
+    public static final String dateFormat = "yyyy-MM-dd";
 
     public LibraryService(BookRepo bookRepository, CategoryRepo categoryRepository, BookLoanRepo bookLoanRepo) {
         this.bookRepository = bookRepository;
@@ -89,17 +88,41 @@ public class LibraryService {
         Book book = bookRepository.findByCode(req.getBookCode())
                 .orElseThrow(() -> new CommonException(HttpStatus.BAD_REQUEST, "Book not found", "Book not found"));
 
+        if (book.getQuantities() == 0)
+            throw new CommonException(HttpStatus.BAD_REQUEST, "Book out of stock", "Book out of stock");
+
         BookLoan bookLoan = new BookLoan(
                 book,
                 currentUser,
-                LocalDateTime.now(),
-                LocalDateTime.parse(req.getDateReturn(), DateTimeFormatter.ofPattern(dateFormat)),
+                LocalDate.now(),
+                LocalDate.parse(req.getDateReturn(), DateTimeFormatter.ofPattern(dateFormat)),
                 LoanStatus.REQUEST,
                 req.getStudentCode()
         );
 
         bookLoanRepo.save(bookLoan);
 
+        return new CommonResp<>("Success", "Success");
+    }
+
+    public CommonResp<?> bookLoanList() {
+        List<BookLoan> bookLoans = bookLoanRepo.findAllByStatusLike(LoanStatus.REQUEST);
+        bookLoans.forEach(bookLoan -> bookLoan.setUserId(null));
+        return new CommonResp<>("Success", "Success", bookLoans);
+    }
+
+    public CommonResp<?> approveBookLoan(Long id, String status) {
+        BookLoan bookLoan = bookLoanRepo.findById(id)
+                .orElseThrow(() -> new CommonException(HttpStatus.BAD_REQUEST, "Book loan not found", "Book loan not found"));
+
+        if (LoanStatus.APPROVED.getValue().equalsIgnoreCase(status)) {
+            bookLoan.getBook().setQuantities(bookLoan.getBook().getQuantities() - 1);
+            bookLoan.setStatus(LoanStatus.APPROVED);
+        } else if (LoanStatus.REJECTED.getValue().equalsIgnoreCase(status)) {
+            bookLoan.setStatus(LoanStatus.REJECTED);
+        }
+
+        bookLoanRepo.save(bookLoan);
         return new CommonResp<>("Success", "Success");
     }
 }

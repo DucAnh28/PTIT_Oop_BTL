@@ -44,14 +44,15 @@ public class JwtFilter extends OncePerRequestFilter {
                 UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(appUser, null, userDetails.getAuthorities());
                 authenticationToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
                 SecurityContextHolder.getContext().setAuthentication(authenticationToken);
-
+                filterChain.doFilter(request, response);
             } else {
                 filterChain.doFilter(request, response);
             }
         } catch (Exception e) {
             logger.error("Can NOT set Can NOT set user authentication -> Message: {}", e);
+            response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+            response.getWriter().write("Unauthorized: Invalid token");
         }
-        filterChain.doFilter(request, response);
     }
 
 

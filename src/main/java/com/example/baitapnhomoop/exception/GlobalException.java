@@ -11,7 +11,7 @@ public class GlobalException {
 
     @ExceptionHandler(CommonException.class)
     public ResponseEntity<?> handleCommonException(CommonException commonException) {
-        return new ResponseEntity<>(commonException.getMessage(), commonException.getStatus());
+        return ResponseEntity.status(commonException.getStatus()).body(new ErrorResponse(commonException));
     }
 
 }
