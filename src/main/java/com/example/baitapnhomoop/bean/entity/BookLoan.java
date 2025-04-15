@@ -46,6 +46,10 @@ public class BookLoan extends BaseEntity {
         this.studentCode = studentCode;
     }
 
+    public BookLoan() {
+
+    }
+
     public Book getBookId() {
         return bookId;
     }
@@ -86,11 +90,5 @@ public class BookLoan extends BaseEntity {
         this.status = status;
     }
 
-    public String getStudentCode() {
-        return studentCode;
-    }
 
-    public void setStudentCode(String studentCode) {
-        this.studentCode = studentCode;
-    }
 }
