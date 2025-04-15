@@ -1,6 +1,6 @@
 package com.example.baitapnhomoop.repository;
 
-import com.example.baitapnhomoop.entity.AppUser;
+import com.example.baitapnhomoop.bean.entity.AppUser;
 import org.springframework.stereotype.Repository;
 
 @Repository

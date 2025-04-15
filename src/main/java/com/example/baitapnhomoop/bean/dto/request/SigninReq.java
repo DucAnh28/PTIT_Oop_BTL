@@ -1,4 +1,4 @@
-package com.example.baitapnhomoop.request;
+package com.example.baitapnhomoop.bean.dto.request;
 
 public class SigninReq {
 

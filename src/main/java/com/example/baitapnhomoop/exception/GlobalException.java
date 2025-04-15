@@ -2,15 +2,16 @@ package com.example.baitapnhomoop.exception;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 @Slf4j
-@ControllerAdvice
+@RestControllerAdvice
 public class GlobalException {
 
     @ExceptionHandler(CommonException.class)
     public ResponseEntity<?> handleCommonException(CommonException commonException) {
         return new ResponseEntity<>(commonException.getMessage(), commonException.getStatus());
     }
+
 }

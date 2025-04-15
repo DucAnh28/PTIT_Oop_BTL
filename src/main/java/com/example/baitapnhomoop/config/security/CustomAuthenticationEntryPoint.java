@@ -1,6 +1,5 @@
 package com.example.baitapnhomoop.config.security;
 
-import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.security.core.AuthenticationException;
@@ -18,8 +17,8 @@ public class CustomAuthenticationEntryPoint implements AuthenticationEntryPoint 
         response.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
         response.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
         response.setContentType("application/json");
-        response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+        response.setStatus(HttpServletResponse.SC_FORBIDDEN);
         response.getWriter()
-                .write("{\"message\":\"Unauthorized\"}");
+                .write("{\"message\":\"Permission Deny\"}");
     }
 }

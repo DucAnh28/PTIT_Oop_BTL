@@ -1,4 +1,4 @@
-package com.example.baitapnhomoop.entity;
+package com.example.baitapnhomoop.bean.entity;
 
 import com.example.baitapnhomoop.common.enums.Role;
 import jakarta.persistence.Entity;

@@ -1,9 +1,9 @@
 package com.example.baitapnhomoop.controller;
 
-import com.example.baitapnhomoop.request.SigninReq;
-import com.example.baitapnhomoop.request.SignupReq;
-import com.example.baitapnhomoop.response.SigninResp;
-import com.example.baitapnhomoop.response.SignupResp;
+import com.example.baitapnhomoop.bean.dto.request.SigninReq;
+import com.example.baitapnhomoop.bean.dto.request.SignupReq;
+import com.example.baitapnhomoop.bean.dto.response.SigninResp;
+import com.example.baitapnhomoop.bean.dto.response.SignupResp;
 import com.example.baitapnhomoop.service.AuthService;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;

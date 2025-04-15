@@ -12,6 +12,11 @@ public class CommonException extends RuntimeException {
 
     private Object errorDetail;
 
+    public CommonException(HttpStatus status, String error, String message) {
+        this.status = status;
+        this.error = error;
+        this.message = message;
+    }
 
     public CommonException(HttpStatus status, String error, String message, Object errorDetail) {
         this.status = status;

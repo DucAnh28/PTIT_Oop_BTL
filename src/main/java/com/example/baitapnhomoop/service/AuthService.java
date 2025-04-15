@@ -1,15 +1,15 @@
 package com.example.baitapnhomoop.service;
 
 import com.example.baitapnhomoop.common.enums.Role;
-import com.example.baitapnhomoop.entity.AppRole;
-import com.example.baitapnhomoop.entity.AppUser;
+import com.example.baitapnhomoop.bean.entity.AppRole;
+import com.example.baitapnhomoop.bean.entity.AppUser;
 import com.example.baitapnhomoop.exception.CommonException;
 import com.example.baitapnhomoop.repository.AppRoleRepo;
 import com.example.baitapnhomoop.repository.AppUserRepo;
-import com.example.baitapnhomoop.request.SigninReq;
-import com.example.baitapnhomoop.request.SignupReq;
-import com.example.baitapnhomoop.response.SigninResp;
-import com.example.baitapnhomoop.response.SignupResp;
+import com.example.baitapnhomoop.bean.dto.request.SigninReq;
+import com.example.baitapnhomoop.bean.dto.request.SignupReq;
+import com.example.baitapnhomoop.bean.dto.response.SigninResp;
+import com.example.baitapnhomoop.bean.dto.response.SignupResp;
 import com.example.baitapnhomoop.util.JwtUtil;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.crypto.password.PasswordEncoder;

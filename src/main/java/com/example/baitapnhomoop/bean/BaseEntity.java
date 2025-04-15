@@ -1,4 +1,4 @@
-package com.example.baitapnhomoop.entity;
+package com.example.baitapnhomoop.bean;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.EntityListeners;
@@ -31,24 +31,11 @@ public class BaseEntity implements Serializable {
     public BaseEntity() {
     }
 
-    public BaseEntity(LocalDateTime createdDate, Long id) {
-        this.createdDate = createdDate;
-        this.id = id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public void setCreatedDate(LocalDateTime createdDate) {
-        this.createdDate = createdDate;
-    }
-
     public Long getId() {
         return id;
     }
 
-    public LocalDateTime getCreatedDate() {
-        return createdDate;
+    public void setId(Long id) {
+        this.id = id;
     }
 }

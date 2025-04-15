@@ -1,6 +1,6 @@
 package com.example.baitapnhomoop.config.filter;
 
-import com.example.baitapnhomoop.entity.AppUser;
+import com.example.baitapnhomoop.bean.entity.AppUser;
 import com.example.baitapnhomoop.repository.AppUserRepo;
 import com.example.baitapnhomoop.util.JwtUtil;
 import jakarta.servlet.FilterChain;
@@ -38,11 +38,10 @@ public class JwtFilter extends OncePerRequestFilter {
                 String username = jwtUtil.extractUsername(token);
 
                 // Lấy userDetail thông qua username:
-
                 AppUser appUser = appUserRepo.findByUsername(username);
                 UserDetails userDetails = new User(appUser.getUsername(), appUser.getPassword(), appUser.getRoles());
                 // Thực hiện việc xác thực thông qua token
-                UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
+                UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(appUser, null, userDetails.getAuthorities());
                 authenticationToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
                 SecurityContextHolder.getContext().setAuthentication(authenticationToken);
 

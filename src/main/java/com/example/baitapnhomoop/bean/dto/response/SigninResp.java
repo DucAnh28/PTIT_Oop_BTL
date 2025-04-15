@@ -1,4 +1,4 @@
-package com.example.baitapnhomoop.response;
+package com.example.baitapnhomoop.bean.dto.response;
 
 public class SigninResp {
 

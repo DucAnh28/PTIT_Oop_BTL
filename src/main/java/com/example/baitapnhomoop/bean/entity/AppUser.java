@@ -1,5 +1,6 @@
-package com.example.baitapnhomoop.entity;
+package com.example.baitapnhomoop.bean.entity;
 
+import com.example.baitapnhomoop.bean.BaseEntity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -50,18 +51,6 @@ public class AppUser extends BaseEntity {
     }
 
     public AppUser(String email, String username, String password, String phone, int status, String address, String ava, Set<AppRole> appRoles) {
-        this.email = email;
-        this.username = username;
-        this.password = password;
-        this.phone = phone;
-        this.status = status;
-        this.address = address;
-        this.ava = ava;
-        this.appRoles = appRoles;
-    }
-
-    public AppUser(LocalDateTime createdDate, Long id, String email, String username, String password, String phone, int status, String address, String ava, Set<AppRole> appRoles) {
-        super(createdDate, id);
         this.email = email;
         this.username = username;
         this.password = password;
