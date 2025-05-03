@@ -5,6 +5,7 @@ import com.example.baitapnhomoop.bean.dto.CommonResp;
 import com.example.baitapnhomoop.bean.dto.request.BookCreateReq;
 import com.example.baitapnhomoop.service.LibraryService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/admin")
 @RequiredArgsConstructor
+@CrossOrigin("*")
 public class AdminController {
 
     private final LibraryService libraryService;
