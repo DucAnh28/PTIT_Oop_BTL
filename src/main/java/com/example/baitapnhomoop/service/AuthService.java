@@ -11,6 +11,7 @@ import com.example.baitapnhomoop.bean.dto.request.SignupReq;
 import com.example.baitapnhomoop.bean.dto.response.SigninResp;
 import com.example.baitapnhomoop.bean.dto.response.SignupResp;
 import com.example.baitapnhomoop.util.JwtUtil;
+import com.example.baitapnhomoop.util.SecurityUtil;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -66,5 +67,11 @@ public class AuthService {
 
         appUserRepo.save(appUser);
         return new SignupResp();
+    }
+
+    public AppUser getProfile() {
+        AppUser appUser = SecurityUtil.getCurrentUser();
+        appUser.setPassword(null);
+        return appUser;
     }
 }

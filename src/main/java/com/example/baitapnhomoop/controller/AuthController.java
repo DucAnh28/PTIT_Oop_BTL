@@ -4,10 +4,12 @@ import com.example.baitapnhomoop.bean.dto.request.SigninReq;
 import com.example.baitapnhomoop.bean.dto.request.SignupReq;
 import com.example.baitapnhomoop.bean.dto.response.SigninResp;
 import com.example.baitapnhomoop.bean.dto.response.SignupResp;
+import com.example.baitapnhomoop.bean.entity.AppUser;
 import com.example.baitapnhomoop.service.AuthService;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -32,5 +34,10 @@ public class AuthController {
     @PostMapping("/signup")
     public SignupResp register(@RequestBody @Valid SignupReq signupReq) {
         return authService.register(signupReq);
+    }
+
+    @GetMapping("/profile")
+    public AppUser profile() {
+        return authService.getProfile();
     }
 }

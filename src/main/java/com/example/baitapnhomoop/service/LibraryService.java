@@ -107,7 +107,10 @@ public class LibraryService {
 
     public CommonResp<?> bookLoanList() {
         List<BookLoan> bookLoans = bookLoanRepo.findAllByStatusLike(LoanStatus.REQUEST);
-        bookLoans.forEach(bookLoan -> bookLoan.setUserId(null));
+        bookLoans.forEach(bookLoan -> {
+            bookLoan.setUserBorrow(bookLoan.getUserId().getUsername());
+            bookLoan.setUserId(null);
+        });
         return new CommonResp<>("Success", "Success", bookLoans);
     }
 
@@ -124,5 +127,10 @@ public class LibraryService {
 
         bookLoanRepo.save(bookLoan);
         return new CommonResp<>("Success", "Success");
+    }
+
+    public CommonResp<?> findAllCategories() {
+        List<Category> categories = categoryRepository.findAll();
+        return new CommonResp<>("Success", "Success", categories);
     }
 }

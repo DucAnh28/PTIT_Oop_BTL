@@ -13,16 +13,14 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.security.Principal;
-
 @RestController
 @CrossOrigin("*")
 @RequestMapping("/book")
-public class BookController {
+public class LibraryController {
 
     private final LibraryService libraryService;
 
-    public BookController(LibraryService libraryService) {
+    public LibraryController(LibraryService libraryService) {
         this.libraryService = libraryService;
     }
 
@@ -34,5 +32,10 @@ public class BookController {
     @PostMapping("/loan")
     public CommonResp<?> loan(@RequestBody BookLoanReq req) {
         return libraryService.loan(req);
+    }
+
+    @GetMapping("/categories")
+    public CommonResp<?> categories() {
+        return libraryService.findAllCategories();
     }
 }

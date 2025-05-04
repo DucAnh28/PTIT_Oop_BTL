@@ -9,6 +9,7 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
 
 import java.time.LocalDate;
 
@@ -49,6 +50,9 @@ public class BookLoan extends BaseEntity {
     public BookLoan() {
 
     }
+
+    @Transient
+    private String userBorrow;
 
     public Book getBook() {
         return book;
@@ -96,6 +100,14 @@ public class BookLoan extends BaseEntity {
 
     public void setDateReturn(LocalDate dateReturn) {
         this.dateReturn = dateReturn;
+    }
+
+    public String getUserBorrow() {
+        return userBorrow;
+    }
+
+    public void setUserBorrow(String userBorrow) {
+        this.userBorrow = userBorrow;
     }
 }
 
