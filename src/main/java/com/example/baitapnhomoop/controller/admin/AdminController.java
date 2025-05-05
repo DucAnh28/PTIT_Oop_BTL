@@ -16,11 +16,14 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/admin")
-@RequiredArgsConstructor
 @CrossOrigin("*")
 public class AdminController {
 
     private final LibraryService libraryService;
+
+    public AdminController(LibraryService libraryService) {
+        this.libraryService = libraryService;
+    }
 
     @GetMapping("/dashboard")
     public String dashboard() {
