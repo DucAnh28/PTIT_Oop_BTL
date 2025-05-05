@@ -18,7 +18,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Set;
-import java.util.stream.Collectors;
 
 @Service
 public class AuthService {
@@ -41,7 +40,7 @@ public class AuthService {
             throw new CommonException(HttpStatus.BAD_REQUEST, "User not found", "User not found", null);
 
         if (passwordEncoder.matches(signinReq.getPassword(), appUser.getPassword())) {
-            String token = jwtUtil.generateToken(signinReq.getUsername());
+            String token = jwtUtil.generateToken(appUser.getUsername());
             return new SigninResp(token);
         } else {
             throw new CommonException(HttpStatus.BAD_REQUEST, "Password incorrect", "password incorrect", null);
@@ -54,9 +53,8 @@ public class AuthService {
         if (existed != null)
             throw new CommonException(HttpStatus.BAD_REQUEST, "User already exists", "User already exists", null);
 
-        Set<AppRole> appRoles = appRoleRepo.findAll().stream()
-                .filter(appRole -> appRole.getName().equals(Role.ROLE_USER))
-                .collect(Collectors.toSet());
+        AppRole userRole = appRoleRepo.findAppRolesByName(Role.ROLE_USER);
+        Set<AppRole> appRoles = Set.of(userRole);
 
         AppUser appUser = new AppUser();
         appUser.setUsername(signupReq.getUsername());
