@@ -1,35 +1,36 @@
 package com.example.baitapnhomoop.bean.dto.request;
 
 import com.example.baitapnhomoop.bean.dto.PagingReq;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import java.util.List;
 
+@EqualsAndHashCode(callSuper = true)
+@Data
 public class BookSearchReq extends PagingReq {
 
-    private String key;
+    private String name;
+    private String author;
+    private String provider;
+    private String code;
     private List<String> category;
 
     public BookSearchReq() {
     }
 
-    public BookSearchReq(String key, List<String> category) {
-        this.key = key;
-        this.category = category;
+    public BookSearchReq(String name, String author, String provider, String code) {
+        this.name = name;
+        this.author = author;
+        this.provider = provider;
+        this.code = code;
     }
 
-    public String getKey() {
-        return key;
-    }
-
-    public void setKey(String key) {
-        this.key = key;
-    }
-
-    public List<String> getCategory() {
-        return category;
-    }
-
-    public void setCategory(List<String> category) {
+    public BookSearchReq(String name, String author, String provider, String code, List<String> category) {
+        this.name = name;
+        this.author = author;
+        this.provider = provider;
+        this.code = code;
         this.category = category;
     }
 }

@@ -51,11 +51,11 @@ public class LibraryService {
     public PagingResp<BookDto> filter(BookSearchReq req) {
         PageRequest pageRequest = req.getPageable(req.getPageIndex(), req.getPageSize());
 
-        Specification<Book> specification = BookSpecification.findByCode(req.getKey())
-                .or(BookSpecification.findByName(req.getKey()))
-                .or(BookSpecification.findByAuthor(req.getKey()))
-                .or(BookSpecification.findByProvider(req.getKey()))
-                .and(BookSpecification.findByCategory(req.getCategory()));
+        Specification<Book> specification = BookSpecification.findByCode(req.getCode())
+                .and(BookSpecification.findByName(req.getName()))
+                .and(BookSpecification.findByAuthor(req.getAuthor()))
+                .and(BookSpecification.findByProvider(req.getProvider()));
+//                .and(BookSpecification.findByCategory(req.getCategory()));
 
         Page<Book> books = bookRepository.findAll(specification, pageRequest);
         List<BookDto> dataResult;
