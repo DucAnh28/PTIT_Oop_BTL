@@ -14,7 +14,7 @@ import java.util.Set;
 @Entity
 public class AppUser extends BaseEntity {
 
-    @Column(columnDefinition = "varchar(255)", unique = true)
+    @Column(columnDefinition = "varchar(255)")
     private String email;
 
     @Column(columnDefinition = "varchar(255)", unique = true, nullable = false)

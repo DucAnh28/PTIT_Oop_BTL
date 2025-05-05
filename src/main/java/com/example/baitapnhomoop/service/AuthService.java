@@ -66,7 +66,7 @@ public class AuthService {
         appUser.setRoles(appRoles);
 
         appUserRepo.save(appUser);
-        return new SignupResp();
+        return new SignupResp("Success", appUser.getUsername(), appUser.getEmail(), appUser.getPhone(), appUser.getRoles());
     }
 
     public AppUser getProfile() {

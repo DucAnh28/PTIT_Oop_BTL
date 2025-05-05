@@ -7,7 +7,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
 
@@ -17,12 +17,10 @@ import java.time.LocalDate;
 @Table(name = "book_loan")
 public class BookLoan extends BaseEntity {
 
-    @JoinColumn(name = "book_id")
-    @OneToOne
+    @ManyToOne
     private Book book;
 
-    @JoinColumn(name = "user_id")
-    @OneToOne
+    @ManyToOne
     private AppUser userId;
 
     @Column(name = "date_borrow", nullable = false)
