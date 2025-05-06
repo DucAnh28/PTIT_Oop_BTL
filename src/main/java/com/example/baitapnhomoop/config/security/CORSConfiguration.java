@@ -17,7 +17,8 @@ public class CORSConfiguration {
                         .allowedHeaders("*")
                         .allowedMethods("*")
                         .allowedOrigins("*")
-                        .exposedHeaders("Content-Disposition", "Authorization");
+                        .exposedHeaders("Content-Disposition", "Authorization")
+                        .allowCredentials(true);
             }
         };
     }
