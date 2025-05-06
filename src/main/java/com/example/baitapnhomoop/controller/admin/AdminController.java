@@ -26,25 +26,25 @@ public class AdminController {
     }
 
     @GetMapping("/dashboard")
-    @CrossOrigin(origins = "*", allowedHeaders = "*", methods = RequestMethod.GET)
+//    @CrossOrigin(origins = "*", allowedHeaders = "*", methods = RequestMethod.GET)
     public String dashboard() {
         return "Admin Dashboard";
     }
 
     @PostMapping("/book/create")
-    @CrossOrigin(origins = "*", allowedHeaders = "*", methods = RequestMethod.POST)
+//    @CrossOrigin(origins = "*", allowedHeaders = "*", methods = RequestMethod.POST)
     public BookDto createBook(@RequestBody BookCreateReq req) {
         return libraryService.createBook(req);
     }
 
     @GetMapping("/book-loan")
-    @CrossOrigin(origins = "*", allowedHeaders = "*", methods = RequestMethod.GET)
+//    @CrossOrigin(origins = "*", allowedHeaders = "*", methods = RequestMethod.GET)
     public CommonResp<?> bookLoan() {
         return libraryService.bookLoanList();
     }
 
     @PutMapping("/book-loan/approve")
-    @CrossOrigin(origins = "*", allowedHeaders = "*", methods = RequestMethod.PUT)
+//    @CrossOrigin(origins = "*", allowedHeaders = "*", methods = RequestMethod.PUT)
     public CommonResp<?> bookLoanApprove(@RequestParam Long id,
                                          @RequestParam String status) {
         return libraryService.approveBookLoan(id, status);
