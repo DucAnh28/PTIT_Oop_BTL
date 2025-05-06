@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/book")
-@CrossOrigin("*")
+//@CrossOrigin("*")
 public class LibraryController {
 
     private final LibraryService libraryService;
