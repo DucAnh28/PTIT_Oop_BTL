@@ -36,11 +36,13 @@ public class AdminController {
     }
 
     @GetMapping("/book-loan")
+    @CrossOrigin("*")
     public CommonResp<?> bookLoan() {
         return libraryService.bookLoanList();
     }
 
     @PutMapping("/book-loan/approve")
+    @CrossOrigin("*")
     public CommonResp<?> bookLoanApprove(@RequestParam Long id,
                                          @RequestParam String status) {
         return libraryService.approveBookLoan(id, status);
